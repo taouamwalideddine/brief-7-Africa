@@ -3,26 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 <nav class="bg-[#000000c6] p-4 navbar">
-    <ul class="flex justify-around items-center navbar-list">
+    <ul class="flex justify-around items-center">
       <li class="navbar-item">
-        <a href="#" class="text-white text-sm md:text-lg font-semibold hover:text-[#757575]  transition duration-300 navbar-link">Africa</a>
+        <a href="index.php" class="text-white text-sm md:text-lg font-semibold hover:text-[#757575]  transition duration-300 navbar-link">Africa</a>
       </li>
+      <ul class="flex gap-4">
       <li class="navbar-item">
-        <a class="bg-[#80808048] px-3 py-2 md:px-4 md:py-2 rounded-full hover:bg-[#292929] active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300 btn-primary">
-            About us
+        <a  href="viewer.php" class="bg-[#80808048] px-3 py-2 md:px-4 md:py-2 rounded-full hover:bg-[#292929] active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300 btn-primary">
+            viewer
         </a>
       </li>
+      <li class="navbar-item">
+        <a href="editor.php" class="bg-[#80808048] px-3 py-2 md:px-4 md:py-2 rounded-full hover:bg-[#292929] active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300 btn-primary">
+            editer
+        </a>
+      </li> 
+      </ul>
+   
     </ul>
   </nav>
-  
-<section class="flex">
-    <div class="flex ml-9 justify-start items-center h-[30rem]">
+
+  <section class="relative h-[30rem] flex items-center justify-center p-3 mt-5">
+    <div class="absolute inset-0">
+        <div class="w-full h-full bg-[url('./images/gazel.gif')] bg-cover bg-center rounded-2xl"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl"></div>
+    </div>
+
+    <div class="relative z-10 text-center text-white px-4">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Discover the Beauty of Africa</h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-6">
+            Explore its rich culture, breathtaking landscapes, and vibrant history.
+        </p>
+        <a href="#explore" class="bg-[#80808048] px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-[#292929] active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300">
+            Explore Now
+        </a>
+    </div>
+</section>
+
+<section class="flex ml-5 mt-5">
+    <div class="flex justify-start items-center h-[30rem]">
         <div class="w-full max-w-md bg-white rounded-xl p-8 shadow-2xl">
             <h1 class="text-3xl font-bold text-center mb-6">Explore more about Africa</h1>
             <p class="text-gray-600 mb-6">
@@ -35,7 +60,6 @@
             </div>
         </div>
     </div>
-   <div class="p-5">
    <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -460,10 +484,7 @@
      data-id="SO"
      d="m 832.6,372.8 -5.7,-5.8 -2.5,-5.7 -4.1,-2.6 -4.2,7.4 -2.5,4.9 4.8,7.7 4.6,6.6 4.8,5 40.3,16.4 10.3,-0.1 -33.5,41.5 -15.9,0.6 -10.7,9.8 -7.8,0.2 -3.3,4.4 -10.5,15.7 0.4,50.4 7.2,11.4 2.7,-3.3 2.9,-7.3 13.4,-16.7 11.4,-10.6 18.1,-13.7 12.1,-11.2 14.1,-18.9 10.1,-15.5 10,-20.2 7,-17.7 5.4,-15.5 2.9,-14.9 2.4,-5 -0.4,-7.3 0.8,-8 -0.5,-3.9 -4.6,0.1 -5.5,4.7 -6.4,1.4 -5.5,2.1 -3.9,0.2 0,0 -6.9,0.5 -4.2,2.6 -6,0.9 -10.5,4.3 -13.2,1.6 -11.3,3.5 -6.1,0 z"
      style="fill:#f2f2f2" />
-</svg>
-   </div>
-</section>   
-
-
+</svg> 
+ </section>
 </body>
 </html>
