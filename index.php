@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <!-- bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-<nav class="bg-[#000000c6] p-4 navbar">
+<nav class="bg-black p-4 navbar">
     <ul class="flex justify-around items-center">
       <li class="navbar-item">
         <a href="index.php" class="text-white text-sm md:text-lg font-semibold hover:text-[#757575]  transition duration-300 navbar-link">Africa</a>
@@ -20,12 +21,11 @@
         </a>
       </li>
       <li class="navbar-item">
-        <a href="editor.php" class="bg-[#80808048] px-3 py-2 md:px-4 md:py-2 rounded-full hover:bg-[#292929] active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300 btn-primary">
-            editer
+        <a href="add.php" class="bg-[#80808048] px-3 py-2 md:px-4 md:py-2 rounded-full hover:bg-[#292929] active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300 btn-primary">
+            add
         </a>
-      </li> 
+      </li>  
       </ul>
-   
     </ul>
   </nav>
 
@@ -486,5 +486,20 @@
      style="fill:#f2f2f2" />
 </svg> 
  </section>
+<footer class="bg-black text-white">
+   <p>
+      2021 My Website. All rights reserved.
+   </p>
+   <p>
+      <a href="#">Privacy Policy</a> 
+      <a href="#">Terms of Service</a>
+   </p>
+<div class="flex space-x-20">
+ <a href="#" class="bi bi-facebook"></a>
+ <a href="#" class="bi bi-twitter"></a>
+ <a href="#" class="bi bi-instagram"></a>
+ <a href="#" class="bi bi-linkedin"></a>
+</div>
+</footer>
 </body>
 </html>
