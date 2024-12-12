@@ -9,7 +9,7 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
    </head>
    <body>
-   <nav class="bg-black p-4 navbar">
+   <nav class="bg-black p-4 navbar fixed top-0 left-0 rounded-bl-xl rounded-br-xl w-full z-50">
       <ul class="flex justify-around items-center">
          <li class="navbar-item">
          <a href="index.php" class="text-white text-sm md:text-lg font-semibold hover:text-[#757575]  transition duration-300 navbar-link">Africa</a>
@@ -28,8 +28,7 @@
          </ul>
       </ul>
    </nav>
-
-   <section class="relative h-[30rem] flex items-center justify-center p-3 mt-5">
+   <section class="relative h-[30rem] flex items-center justify-center p-3">
       <div class="absolute inset-0">
          <div class="w-full h-full bg-[url('./images/gazel.gif')] bg-cover bg-center rounded-2xl"></div>
          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl"></div>

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare($query);
     $stmt->execute([$name, $population, $languages, $continent]);
 
-    header("Location: index.php");
+    header("Location: viewer.php");
 }
 ?>
 <!DOCTYPE html>
