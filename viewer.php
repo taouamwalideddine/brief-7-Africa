@@ -1,4 +1,3 @@
-
 <?php include 'DbCon.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,64 +24,66 @@
     </ul>
 </nav>
 
-<div class="container mx-auto">
+<div class="container mx-auto px-4">
     <h1 class="text-2xl font-bold mb-6 text-center">Countries and Cities in Africa</h1>
     <a href="add.php" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Add New Country</a>
-    <div class="overflow-x-auto">
-        <table class="table-auto w-full bg-white shadow-md rounded-lg">
-            <thead>
-                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                    <th class="py-3 px-6 text-left">Country</th>
-                    <th class="py-3 px-6 text-left">City</th>
-                    <th class="py-3 px-6 text-left">Type</th>
-                    <th class="py-3 px-6 text-right">Population</th>
-                    <th class="py-3 px-6 text-left">Languages</th>
-                    <th class="py-3 px-6 text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-700 text-sm">
-                <?php
-                $query = "SELECT c.ID as CountryID, c.Name as Country, ci.Name as City, ci.ID as CityID, ci.Type, c.Population, c.Languages 
-                          FROM Countries c
-                          LEFT JOIN Cities ci ON c.ID = ci.Country_ID
-                          ORDER BY c.ID";
-                $stmt = $pdo->query($query);
-                $currentCountryID = null;
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<tr class='border-b border-gray-200 hover:bg-gray-100'>";
-                    
-                    if ($currentCountryID !== $row['CountryID']) {
-                        $currentCountryID = $row['CountryID'];
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <?php
+        $query = "SELECT c.ID as CountryID, c.Name as Country, ci.Name as City, ci.ID as CityID, ci.Type, c.Population, c.Languages 
+                  FROM Countries c
+                  LEFT JOIN Cities ci ON c.ID = ci.Country_ID
+                  ORDER BY c.ID";
+        $stmt = $pdo->query($query);
+        $countries = [];
 
-                        // Display country details only once
-                        echo "<td class='py-3 px-6 text-left font-semibold' rowspan='1'>{$row['Country']}</td>";
-                        echo "<td class='py-3 px-6 text-left'>{$row['City']}</td>";
-                        echo "<td class='py-3 px-6 text-left'>{$row['Type']}</td>";
-                        echo "<td class='py-3 px-6 text-right'>" . number_format($row['Population']) . "</td>";
-                        echo "<td class='py-3 px-6 text-left'>{$row['Languages']}</td>";
-                        echo "<td class='py-3 px-6 text-center'>
-                                <a href='editCountry.php?id={$row['CountryID']}' class='text-blue-500 hover:underline'>Edit Country</a>
-                                <a href='editCity.php?id={$row['CityID']}' class='text-blue-500 hover:underline'>Edit City</a>
-                                |
-                                <a href='delete.php?id={$row['CountryID']}' class='text-red-500 hover:underline'>Delete</a>
-                              </td>";
-                    } else {
-                        // Display only city details
-                        echo "<td></td>";
-                        echo "<td class='py-3 px-6 text-left'>{$row['City']}</td>";
-                        echo "<td class='py-3 px-6 text-left'>{$row['Type']}</td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "<td class='py-3 px-6 text-center'>
-                                <a href='editCity.php?id={$row['CityID']}' class='text-blue-500 hover:underline'>Edit City</a>
-                              </td>";
-                    }
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if (!isset($countries[$row['CountryID']])) {
+                $countries[$row['CountryID']] = [
+                    'Country' => $row['Country'],
+                    'Population' => $row['Population'],
+                    'Languages' => $row['Languages'],
+                    'Cities' => []
+                ];
+            }
+
+            if ($row['City']) {
+                $countries[$row['CountryID']]['Cities'][] = [
+                    'City' => $row['City'],
+                    'Type' => $row['Type'],
+                    'CityID' => $row['CityID']
+                ];
+            }
+        }
+
+        foreach ($countries as $countryID => $country) {
+            echo "<div class='bg-white shadow-md rounded-lg p-6'>";
+            echo "<h2 class='text-lg font-semibold mb-2'>{$country['Country']}</h2>";
+            echo "<p class='text-sm text-gray-600'><strong>Population:</strong> " . number_format($country['Population']) . "</p>";
+            echo "<p class='text-sm text-gray-600'><strong>Languages:</strong> {$country['Languages']}</p>";
+
+            echo "<h3 class='text-md font-semibold mt-4 mb-2'>Cities:</h3>";
+            echo "<ul class='list-disc ml-4'>";
+
+            foreach ($country['Cities'] as $city) {
+                echo "<li class='text-sm text-gray-600'>
+                        <strong>{$city['City']} ({$city['Type']})</strong>
+                        <div class='mt-1'>
+                            <a href='editCity.php?id={$city['CityID']}' class='text-blue-500 hover:underline'>Edit City</a>
+                        </div>
+                    </li>";
+            }
+
+            echo "</ul>";
+
+            echo "<div class='mt-4'>
+                    <a href='editCountry.php?id={$countryID}' class='text-blue-500 hover:underline mr-2'>Edit Country</a>
+                    <a href='delete.php?id={$countryID}' class='text-red-500 hover:underline'>Delete</a>
+                </div>";
+
+            echo "</div>";
+        }
+        ?>
     </div>
 </div>
 </body>

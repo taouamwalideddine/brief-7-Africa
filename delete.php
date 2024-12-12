@@ -6,5 +6,5 @@ $query = "DELETE FROM Countries WHERE ID = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 
-header("Location: index.php");
+header("Location: viewer.php");
 ?>
