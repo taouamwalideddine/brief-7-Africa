@@ -11,6 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $population = $_POST['population'];
     $languages = $_POST['languages'];
 
+    if (!preg_match('/^[a-zA-Z ]+$/', $name)) {
+        die("Invalid country name. Only letters and spaces are allowed.");
+    }
+    if (!preg_match('/^[0-9]+$/', $population)) {
+        die("Invalid population. Only numbers are allowed.");
+    }
+    if (!preg_match('/^[a-zA-Z, ]+$/', $languages)) {
+        die("Invalid languages. Only letters, commas, and spaces are allowed.");
+    }
+
     $query = "UPDATE Countries SET Name = ?, Population = ?, Languages = ? WHERE ID = ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$name, $population, $languages, $id]);
@@ -51,18 +61,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="POST" class="bg-black p-6 shadow-md border-4 border-[#a0a0a0] rounded-xl">
             <div class="mb-4">
                 <label class="block text-white">Country Name</label>
-                <input type="text" name="name" value="<?= htmlspecialchars($country['Name']) ?>" 
-                       class="w-full border border-gray-300 p-2 rounded" required>
+                       <input type="text" name="name" value="<?= htmlspecialchars($country['Name']) ?>" class="w-full border border-gray-300 p-2 rounded" pattern="^[a-zA-Z ]+$"  required>  
             </div>
             <div class="mb-4">
                 <label class="block text-white">Population</label>
-                <input type="number" name="population" value="<?= htmlspecialchars($country['Population']) ?>" 
-                       class="w-full border border-gray-300 p-2 rounded" required>
+                <input type="number" name="population" value="<?= htmlspecialchars($country['Population']) ?>" class="w-full border border-gray-300 p-2 rounded" pattern="^[0-9]+$" required>
             </div>
             <div class="mb-4">
                 <label class="block text-white">Languages</label>
-                <input type="text" name="languages" value="<?= htmlspecialchars($country['Languages']) ?>" 
-                       class="w-full border border-gray-300 p-2 rounded" required>
+                <input type="text" name="languages" value="<?= htmlspecialchars($country['Languages']) ?>" class="w-full border border-gray-300 p-2 rounded" pattern="^[a-zA-Z ]+$" required>
             </div>
             <button type="submit" class="bg-black border-2 rounded-lg hover:bg-white hover:text-black text-white px-4 py-2 rounded">Update Country</button>
         </form>
