@@ -46,18 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="container mx-auto">
         <h1 class="text-2xl font-bold mb-6 text-center">Add New Country</h1>
-        <form action="" method="POST" class="bg-white p-6 shadow-md rounded">
+        <form action="" method="POST" class="bg-black p-6 shadow-md border-4 border-[#a0a0a0] rounded-xl">
             <div class="mb-4">
-                <label class="block text-gray-700">Country Name</label>
-                <input type="text" name="name" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-white">Country Name</label>
+                <input type="text" name="name" class="w-full border border-black p-2 rounded-xl" required>
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700">Population</label>
-                <input type="number" name="population" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-white">Population</label>
+                <input type="number" name="population" class="w-full border border-black p-2 rounded-xl" required>
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700">Languages</label>
-                <input type="text" name="languages" class="w-full border border-gray-300 p-2 rounded" required>
+                <label class="block text-white">Languages</label>
+                <input type="text" name="languages" class="w-full border border-black p-2 rounded-xl" required>
             </div>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Country</button>
         </form>

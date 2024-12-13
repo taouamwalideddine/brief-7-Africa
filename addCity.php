@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
             </select>
         </div>
-        <button type="submit" class="bg-black border-2 rounded-lg hover:bg-white hover:text-black    text-white px-4 py-2 rounded">Add City</button>
+<button type="submit" class="bg-black border-2 rounded-lg hover:bg-white hover:text-black text-white px-4 py-2">Add City</button>
     </form>
 </div>
 <footer class="bg-black text-white mt-10 py-8">
